@@ -8,4 +8,4 @@ jobs:
     AWS_REGION : ${{US East (N. Virginia) us-east-1}}
     S3_BUCKET_NAME : ${{staticsite01}}
     run : |
-    aws s3 sync build/ s3://$staticsite01 --delete
+    aws s3 sync build/ s3://$staticsite01 --delete :
