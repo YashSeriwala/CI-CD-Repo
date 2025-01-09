@@ -1,19 +1,13 @@
-name: Redeploy React App to S3
-'on':
-  push:
-    branches:
-      - main
-jobs:
-  redeploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to S3
-        env:
-          AWS_ACCESS_KEY_ID: '${{ secrets.AKIAVRUVQ3WPTEOVD6NL }}'
-          AWS_SECRET_ACCESS_KEY: '${{ secrets.txnaBGEF5qfuWdy3JCSIpwfc45Yy0AlXO4Jnkpzn}}'
-          AWS_REGION: '${{ secrets.us-east-1}}'
-          S3_BUCKET_NAME: '${{ secrets.staticsite01 }}'
-        run: |
-          aws s3 sync build/ s3://$staticsite01 --delete
+name : build_and_upload_S3
+run-name : Build and Upload Files to S3
+on : push
+jobs : 
+  build_and_upload : 
+    env : 
+    AWS_ACCESS_KEY_ID : ${{secrets.AKIAVRUVQ3WPTEOVD6NL }}
+    AWS_SECRET_KEY_ID : ${{secrets.txnaBGEF5qfuWdy3JCSIpwfc45Yy0AlXO4Jnkpzn}}
+    AWS_REGION: ${{ secrets.us-east-1}}
+    S3_BUCKET_NAME: '${{ secrets.staticsite01 }}
 
-          
+    run : |
+    aws s3 sync build/ s3://$staticsite01 --delete
