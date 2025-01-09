@@ -5,7 +5,7 @@ name: Redeploy React App to S3
     branches:
       - main
 jobs:
-  redeploy:
+  
       - name: Deploy to S3
         env:
           AWS_ACCESS_KEY_ID: '${{ secrets.ACCESSKEY}}'
