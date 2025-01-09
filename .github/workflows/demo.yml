@@ -1,11 +1,11 @@
 name: hello-world
 'on': push
 jobs:
-  changes-upload : 
-    name : changes to s3
-    AWS_ACCESS_KEY_ID : ${{AKIAVRUVQ3WPTEOVD6NL}}
-    AWS_SECRET_KEY_ID : ${{secrets.txnaBGEF5qfuWdy3JCSIpwfc45Yy0AlXO4Jnkpzn}}
-    AWS_REGION : ${{US East (N. Virginia) us-east-1}}
-    S3_BUCKET_NAME : ${{staticsite01}}
-    run : |
-    aws s3 sync build/ s3://$staticsite01 --delete :
+  changes-upload:
+    name: changes to s3
+    AWS_ACCESS_KEY_ID: '${{AKIAVRUVQ3WPTEOVD6NL}}'
+    AWS_SECRET_KEY_ID: '${{secrets.txnaBGEF5qfuWdy3JCSIpwfc45Yy0AlXO4Jnkpzn}}'
+    AWS_REGION: '${{US East (N. Virginia) us-east-1}}'
+    S3_BUCKET_NAME: '${{staticsite01}}'
+    run: ''
+    'aws s3 sync build/ s3://$staticsite01 --delete': null
