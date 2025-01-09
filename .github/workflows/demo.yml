@@ -1,13 +1,28 @@
-name : build_and_upload_S3
-run-name : Build and Upload Files to S3
-on : push
-jobs : 
-  build_and_upload : 
-    env : 
-    AWS_ACCESS_KEY_ID : ${{secrets.ACCESSKEY }}
-    AWS_SECRET_KEY_ID : ${{secrets.SECRETKEY}}
-    AWS_REGION: ${{ secrets.us-east-1}}
-    S3_BUCKET_NAME: '${{ secrets.staticsite01 }}
 
-    run : |
-    aws s3 sync build/ s3://$staticsite01 --delete
+name: Redeploy React App to S3
+'on':
+  push:
+    branches:
+      - main
+jobs:
+  redeploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
+      - name: Build the React app
+        run: npm run build
+      - name: Deploy to S3
+        env:
+          AWS_ACCESS_KEY_ID: '${{ secrets.ACCESSKEY}}'
+          AWS_SECRET_ACCESS_KEY: '${{ secrets.SECRETKEY }}'
+          AWS_REGION: '${{ secrets.us-east-1}}'
+          S3_BUCKET_NAME: '${{ secrets.staticsite01 }}'
+        run: |
+          aws s3 sync build/ s3://$staticsite01 --delete
