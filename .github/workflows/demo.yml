@@ -4,8 +4,8 @@ on : push
 jobs : 
   build_and_upload : 
     env : 
-    AWS_ACCESS_KEY_ID : ${{secrets.AKIAVRUVQ3WPTEOVD6NL }}
-    AWS_SECRET_KEY_ID : ${{secrets.txnaBGEF5qfuWdy3JCSIpwfc45Yy0AlXO4Jnkpzn}}
+    AWS_ACCESS_KEY_ID : ${{secrets.ACCESSKEY }}
+    AWS_SECRET_KEY_ID : ${{secrets.SECRETKEY}}
     AWS_REGION: ${{ secrets.us-east-1}}
     S3_BUCKET_NAME: '${{ secrets.staticsite01 }}
 
