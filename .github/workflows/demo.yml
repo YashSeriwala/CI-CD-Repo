@@ -1,7 +1,7 @@
 name: hello-world
 'on': push
 jobs:
-  changes-upload:
+  first-job : 
     name: changes to s3
     AWS_ACCESS_KEY_ID: '${{AKIAVRUVQ3WPTEOVD6NL}}'
     AWS_SECRET_KEY_ID: '${{secrets.txnaBGEF5qfuWdy3JCSIpwfc45Yy0AlXO4Jnkpzn}}'
