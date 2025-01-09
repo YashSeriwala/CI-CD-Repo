@@ -14,6 +14,6 @@ jobs:
           AWS_REGION: '${{ secrets.us-east-1}}'
           S3_BUCKET_NAME: '${{ secrets.staticsite01 }}'
         run: |
-          aws s3 sync build/ s3://$S3_BUCKET_NAME --delete
+          aws s3 sync build/ s3://$staticsite01 --delete
 
           
