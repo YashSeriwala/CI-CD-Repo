@@ -1,13 +1,13 @@
-name: Deploy React App to s3
-'on':
-  push:
-    branches:
-      - main
-jobs : 
-  Deploy : 
-    -runs on : ubuntu-latest
-     steps : 
-     AWS-ACCESS-KEY-ID : ${{secrets.ACCESSKEY}}
-     AWS-SECRET-KEY-ID : ${{secrets.SECRETSKEY}}
-     AWS-REGION : us-east-1
-     BUCKET-NAME : 
+name: hello-world
+'on': push
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: my-step
+        run: echo "Hello World!"
+        env :
+        AWS-ACCESS-KEY-ID : ${{secrets.ACCESSKEY }}
+        AWS-SECRET-KEY-ID : ${{secret.SECRETKEY}}
+        AWS-REGION : us-east-1
+        AWS-BUCKET : s3://demo-buckett-01
