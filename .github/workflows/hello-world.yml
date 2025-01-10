@@ -15,9 +15,9 @@ jobs:
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws_access_key_id: '${{ secrets.ACCESSKEY}}'
-          aws_secret_access_key: '${{ secrets.SECRETKEY }}'
-          aws_region: us-east-1
+          aws-access-key-id: '${{ secrets.ACCESSKEY}}'
+          aws-secret-access-key: '${{ secrets.SECRETKEY }}'
+          aws-region: us-east-1
       - name: Copy files to S3 bucket
         run: >
           aws s3 cp ./build s3://demo-buckett-01 --recursive
