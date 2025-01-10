@@ -1,15 +1,23 @@
-name: hello-world
-'on': push
+name: Deploy to S3
+'on':
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 jobs:
-  my-job:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: my-step
-        run: echo "Hello World!"
-        env :
-        AWS-ACCESS-KEY-ID : ${{secrets.ACCESSKEY }}
-        AWS-SECRET-KEY-ID : ${{secret.SECRETKEY}}
-        AWS-REGION : us-east-1
-        AWS-BUCKET : s3://demo-buckett-01
-
-        run : aws s3 cp 
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws_access_key_id: '${{ secrets.ACCESSKEY}}'
+          aws_secret_access_key: '${{ secrets.SECRETKEY }}'
+          aws_region: us-east-1
+      - name: Copy files to S3 bucket
+        run: >
+          aws s3 cp ./ s3://demo-buckett-01 --recursive
