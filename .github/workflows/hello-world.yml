@@ -11,3 +11,5 @@ jobs:
         AWS-SECRET-KEY-ID : ${{secret.SECRETKEY}}
         AWS-REGION : us-east-1
         AWS-BUCKET : s3://demo-buckett-01
+
+        run : aws s3 cp 
