@@ -1,3 +1,5 @@
+# This is for copy one object from s3 to another s3
+
 name: Deploy to S3
 'on':
   push:
